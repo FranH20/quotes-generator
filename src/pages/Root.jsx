@@ -14,7 +14,7 @@ function Root() {
         </div>
         <Navigator />
       </header>
-      <main className="px-8 pt-8">
+      <main className="px-8 pt-8 bg-vector-background min-h-screen">
         <Outlet />
       </main>
     </>

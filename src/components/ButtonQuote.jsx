@@ -12,13 +12,13 @@ export const ButtonBase = forwardRef(({ name, className, onClick }, ref) => {
   );
 });
 
-export const ButtonQuote = ({ name, className, img, onClick }) => {
+export const ButtonQuote = ({ name, className, img, onClick , classImage='w-5'}) => {
   return (
     <button
       onClick={onClick}
-      className={`${className} flex items-center py-2 px-4 gap-x-2 font-bold max-h-12 rounded`}
+      className={`flex items-center py-2 px-4 gap-x-2 font-bold rounded ${className} `}
     >
-      <img src={img} alt={name} className="w-5" />
+      <img src={img} alt={name} className={classImage} />
       {name}
     </button>
   );

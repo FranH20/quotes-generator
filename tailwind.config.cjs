@@ -22,11 +22,13 @@ module.exports = {
       blue: colors.blue,
       gray: colors.gray,
       amber: colors.amber,
-      green: colors.green
+      green: colors.green,
+      fuchsia: colors.fuchsia
     },
     extend: {
       backgroundImage: {
-        'background-image-generator': "url('src/assets/background-example.jpg')"
+        'background-image-generator': "url('src/assets/background-example.jpg')",
+        'vector-background': "url('src/assets/repeating-chevrons.svg')"
       }
     },
   },
