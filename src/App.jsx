@@ -1,23 +1,41 @@
 import './App.css'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom';
 import Root from './pages/Root';
 import Home from './pages/Home';
 import Generator from './pages/Generator';
+import Quotes from './pages/Quotes';
+import AboutMe from './pages/AboutMe';
 
-export const pathLinks = ["inicio", "generador", "citas", "información", "Sobre mi"];
+import { PATHLINKS } from "./hooks/constants";
+import NotFound from './pages/NotFound';
 
 const router = createBrowserRouter([
   {
-      path: '/',
       element: <Root />,
       children: [
         {
-          path: pathLinks[0],
-          element: <Home /> 
+          index: true,
+          element: <Navigate to={PATHLINKS[0]} />
         },
         {
-          path: pathLinks[1],
-          element: <Generator />
+          path: PATHLINKS[0],
+          element: <Home />,
+        },
+        {
+          path: PATHLINKS[1],
+          element: <Generator />,
+        },
+        {
+          path: PATHLINKS[2],
+          element: <Quotes />,
+        },
+        {
+          path: PATHLINKS[3],
+          element: <AboutMe />,
+        },
+        {
+          path: '*',
+          element: <NotFound />
         }
       ]
   }

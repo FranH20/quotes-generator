@@ -1,12 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { pathLinks } from "../App";
+import { PATHLINKS } from "../hooks/constants";
 
-export const Navigator = () => {
+const Navigator = () => {
   return (
     <nav className="flex items-center">
       <ul className="flex justify-around gap-5">
-        {pathLinks.map((link, index) => (
+        {PATHLINKS.map((link, index) => (
           <li key={index}>
             <NavLink
               to={link}
@@ -23,3 +23,5 @@ export const Navigator = () => {
     </nav>
   );
 };
+
+export default Navigator
