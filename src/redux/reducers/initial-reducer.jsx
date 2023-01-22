@@ -2,6 +2,7 @@ import {
   SEARCH_QUOTES_ERROR,
   SEARCH_QUOTES_LOADING,
   SEARCH_QUOTES_SUCCESS,
+  ADD_PAGINATION
 } from "../actions/initial-actions";
 
 const initialState = {
@@ -29,6 +30,11 @@ const initialReducer = (state = initialState, action) => {
         size: action.size,
         category: action.category
       };
+    case ADD_PAGINATION:
+      return {
+        ...state,
+        pagination: action.pagination
+      }
     case SEARCH_QUOTES_ERROR:
       return { ...state, isLoading: false, data: [], error: action.error };
     default:

@@ -36,11 +36,6 @@ const Generator = () => {
     await downloadImage(divImage);
   };
 
-  const changeSize = (width = 640, height = 640) => {
-    // divImage.current.style.width = '450px';
-    // divImage.current.style.height = '358px';
-  };
-
   return (
     <>
       <Title name="Genera tu frase aqui" />
@@ -50,17 +45,14 @@ const Generator = () => {
             <ButtonBase
               name="Cuadrado"
               className="bg-color-secondary px-5 text-white font-bold border hover:bg-color-third"
-              onClick={changeSize(640, 640)}
             />
             <ButtonBase
               name="Horizontal"
               className="bg-color-secondary px-5 text-white font-bold border hover:bg-color-third"
-              onClick={changeSize(600, 740)}
             />
             <ButtonBase
               name="Vertical"
               className="bg-color-secondary px-5 text-white font-bold border hover:bg-color-third"
-              onClick={changeSize(600, 400)}
             />
           </article>
           <article className="relative inline-block overflow-hidden">
@@ -99,59 +91,59 @@ const Generator = () => {
               img={iconTextGenerator}
               classImage="w-10"
             />
-            <Formik
-              initialValues={{ text: "", author: "" }}
-              validationSchema={QuoteSchema}
-              onSubmit={handleSubmit}
-            >
-              {({ errors, touched }) => (
-                <Form className="row-start-2 col-start-1 col-end-11 grid grid-cols-10 grid-rows-10 gap-y-4">
-                  <label className="row-start-1 col-start-2 col-end-10 text-l">
-                    Selecciona un tema para tu frase:
-                  </label>
-                  <QuotesContainer
-                    className="row-start-2 col-start-2 col-end-10 flex flex-wrap gap-3 content-start"
-                    setQuote={setQuote}
-                  />
-                  <label
-                    htmlFor="cita"
-                    className="row-start-3 col-start-2 col-end-10 text-l"
-                  >
-                    Escriba su propia frase:
-                  </label>
-                  <div className="row-start-4 col-start-2 col-end-10">
-                    <Field
-                      id="text"
-                      name="text"
-                      placeholder="Su frase aqui"
-                      className="rounded w-full block bg-gray-200 text-gray-700 focus:outline-none focus:bg-white border border-gray-200 p-2"
+            <main className="row-start-2 col-start-1 col-end-11 grid grid-cols-10">
+              <Formik
+                initialValues={{ text: "", author: "" }}
+                validationSchema={QuoteSchema}
+                onSubmit={handleSubmit}
+              >
+                {({ errors, touched }) => (
+                  <Form className="row-start-1 col-start-1 col-end-11 grid grid-cols-10 grid-rows-10 gap-y-4">
+                    <label className="row-start-1 col-start-2 col-end-10 text-l">
+                      Selecciona un tema para tu frase:
+                    </label>
+                    <QuotesContainer
+                      className="row-start-2 col-start-2 col-end-10 flex flex-wrap gap-3 content-start"
+                      setQuote={setQuote}
                     />
-                    {errors.text && touched.text ? (
-                      <MessageError error={errors.text}/>
-                    ) : null}
-                  </div>
-                  <div className="row-start-5 col-start-2 col-end-10 ">
-                    <Field
-                      id="author"
-                      name="author"
-                      type="text"
-                      placeholder="Ingrese el autor aqui"
-                      className="rounded w-full block bg-gray-200 text-gray-700 focus:outline-none focus:bg-white border border-gray-200 p-2"
+                    <label
+                      htmlFor="cita"
+                      className="row-start-4 col-start-2 col-end-10 text-l"
+                    >
+                      Escriba su propia frase:
+                    </label>
+                    <div className="row-start-5 col-start-2 col-end-10">
+                      <Field
+                        id="text"
+                        name="text"
+                        placeholder="Su frase aqui"
+                        className="rounded w-full block bg-gray-200 text-gray-700 focus:outline-none focus:bg-white border border-gray-200 p-2"
+                      />
+                      {errors.text && touched.text ? (
+                        <ErrorMessage error={errors.text} />
+                      ) : null}
+                    </div>
+                    <div className="row-start-6 col-start-2 col-end-10 ">
+                      <Field
+                        id="author"
+                        name="author"
+                        type="text"
+                        placeholder="Ingrese el autor aqui"
+                        className="rounded w-full block bg-gray-200 text-gray-700 focus:outline-none focus:bg-white border border-gray-200 p-2"
+                      />
+                      {errors.author && touched.author ? (
+                        <ErrorMessage error={errors.author} />
+                      ) : null}
+                    </div>
+                    <ButtonBase
+                      ref={buttonRef}
+                      name="Agregar"
+                      className="row-start-7 col-start-2 col-end-10 bg-color-secondary text-white hover:bg-color-third"
                     />
-                    {errors.author && touched.author ? (
-                      <h5 className="my-1 text-color-primary">
-                        {errors.author}
-                      </h5>
-                    ) : null}
-                  </div>
-                  <ButtonBase
-                    ref={buttonRef}
-                    name="Agregar"
-                    className="row-start-6 col-start-2 col-end-10 bg-color-secondary text-white hover:bg-color-third"
-                  />
-                </Form>
-              )}
-            </Formik>
+                  </Form>
+                )}
+              </Formik>
+            </main>
             <ButtonBase
               name="Descargar"
               className="row-start-3 row-end-4 col-start-2 col-end-10 border-0 bg-color-primary text-white font-bold hover:bg-fuchsia-800"

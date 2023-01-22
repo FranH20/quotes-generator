@@ -3,13 +3,18 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ButtonBase } from "../components/ButtonQuote";
 import QuoteContainer from "../components/QuoteContainer";
-import { searchQuotes } from "../redux/actions/initial-actions";
+import {
+  searchQuotes,
+  nextPagination,
+  lastPagination,
+} from "../redux/actions/initial-actions";
 import {
   getQuotesLoading,
   getQuotesData,
   getQuotesError,
   getQuotesPagination,
-  getQuoteCategory
+  getQuoteSize,
+  getQuoteCategory,
 } from "../redux/selectors";
 import { CATEGORIES } from "../hooks/constants";
 import Title from "../components/Title";
@@ -27,6 +32,7 @@ const Quotes = () => {
   const isLoading = useSelector(getQuotesLoading);
   const pagination = useSelector(getQuotesPagination);
   const category = useSelector(getQuoteCategory);
+  const size = useSelector(getQuoteSize);
   const buttonSubmit = useRef();
 
   useEffect(() => {
@@ -38,16 +44,34 @@ const Quotes = () => {
     dispatch(searchQuotes(values.category));
   };
 
+  const handleNextQuotes = () => {
+    dispatch(nextPagination(pagination, size));
+  };
+  const handleLastQuotes = () => {
+    dispatch(lastPagination(pagination, size));
+  };
+
   const ButtonsContainer = () => {
     return (
       <>
+        <div className="text-center text-l">
+          <h4>
+            Total elements: <strong>{size}</strong>
+          </h4>
+          <h5>
+            Start: <strong>{pagination.start}</strong> - End:{" "}
+            <strong>{pagination.end}</strong>
+          </h5>
+        </div>
         <ButtonBase
           name="Anterior"
           className="bg-color-secondary text-white hover:bg-color-third"
+          onClick={handleLastQuotes}
         />
         <ButtonBase
           name="Siguiente"
           className="bg-color-secondary text-white hover:bg-color-third"
+          onClick={handleNextQuotes}
         />
       </>
     );

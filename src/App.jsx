@@ -7,6 +7,7 @@ import Quotes from './pages/Quotes';
 import AboutMe from './pages/AboutMe';
 
 import { PATHLINKS } from "./hooks/constants";
+import NotFound from './pages/NotFound';
 
 const router = createBrowserRouter([
   {
@@ -18,19 +19,23 @@ const router = createBrowserRouter([
         },
         {
           path: PATHLINKS[0],
-          element: <Home />
+          element: <Home />,
         },
         {
           path: PATHLINKS[1],
-          element: <Generator />
+          element: <Generator />,
         },
         {
           path: PATHLINKS[2],
-          element: <Quotes />
+          element: <Quotes />,
         },
         {
           path: PATHLINKS[3],
-          element: <AboutMe /> 
+          element: <AboutMe />,
+        },
+        {
+          path: '*',
+          element: <NotFound />
         }
       ]
   }
