@@ -6,6 +6,7 @@ import iconFamous from "../assets/icons/famous-icon.svg";
 import iconDonaldTrump from "../assets/icons/donald-trump-icon.svg";
 import iconAnime from "../assets/icons/anime-icon.svg";
 import iconBreakingBad from "../assets/icons/breaking-bad-icon.svg";
+import iconQuoteEs from "../assets/icons/quote-es-icon.svg"
 import {
   getQuoteNorris,
   getMarvel,
@@ -13,6 +14,7 @@ import {
   getRandomTrump,
   getRandomAnimechan,
   getRandomBreakingBad,
+  getQuoteEs
 } from "../hooks/fetchQuotes";
 
 const QuotesContainer = ({ className, setQuote }) => {
@@ -54,6 +56,12 @@ const QuotesContainer = ({ className, setQuote }) => {
         className="bg-green-500 hover:bg-green-400 text-black"
         img={iconBreakingBad}
         onClick={() => getRandomBreakingBad(setQuote)}
+      />
+      <ButtonQuote 
+        name="Quote of the day"
+        className="bg-purple-800 text-white"
+        img={iconQuoteEs}
+        onClick={() => getQuoteEs(setQuote)}
       />
     </section>
   );
