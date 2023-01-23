@@ -14,7 +14,7 @@ function Root() {
         </div>
         <Navigator />
       </header>
-      <main className="p-8 bg-vector-background min-h-screen">
+      <main className="p-8 bg-[url('/img/repeating-chevrons.svg')] min-h-screen">
         <Outlet />
       </main>
       <Footer />

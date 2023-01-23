@@ -3,7 +3,7 @@ import Spinner from "../components/Spinner";
 import Title from "../components/Title";
 import TitleWritting from "../components/TitleWritting";
 import QuotesContainer from "../containers/QuotesContainer";
-import { getQuotes, getQuoteEs } from "../hooks/fetchQuotes";
+import { getQuoteEs } from "../hooks/fetchQuotes";
 
 const Home = () => {
   const [quote, setQuote] = useState({ text: "", author: "" });
