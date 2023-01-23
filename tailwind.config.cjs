@@ -23,12 +23,13 @@ module.exports = {
       gray: colors.gray,
       amber: colors.amber,
       green: colors.green,
-      fuchsia: colors.fuchsia
+      fuchsia: colors.fuchsia,
+      purple: colors.purple
     },
     extend: {
       backgroundImage: {
-        'background-image-generator': "url('src/assets/background-example.jpg')",
-        'vector-background': "url('src/assets/repeating-chevrons.svg')"
+        'background-image-generator': "url('img/background-example.jpg')",
+        'vector-background': "url('img/repeating-chevrons.svg')"
       }
     },
   },

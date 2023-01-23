@@ -57,3 +57,16 @@ export const CATEGORIES = [
   "psychology",
 ];
 
+export const FONTS = [
+  "Arial",
+  "Nunito",
+  "Times New Roman",
+  "Helvetica",
+  "Calibri",
+  "Georgia",
+  "Cambria",
+  "Veranda",
+  "Tahoma",
+  "Trebuchet",
+  "Century Gothic"
+];
