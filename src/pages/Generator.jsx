@@ -96,7 +96,7 @@ const Generator = () => {
               className="div-image-quote overflow-hidden transition-all"
               style={{ width: "640px", height: "640px" }}
             >
-              <div className="div-image-generator bg-background-image-generator absolute w-full h-full bg-cover"></div>
+              <div className="div-image-generator bg-[url('/img/background-example.jpg')] absolute w-full h-full bg-cover"></div>
               <div className="absolute left-2/4 top-[45%] -translate-x-2/4 -translate-y-1/2 w-full px-8">
                 <p className="text-5xl text-center">{quote.text}</p>
               </div>
