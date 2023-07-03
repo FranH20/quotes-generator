@@ -4,7 +4,7 @@ import iconQuoteGenerator from "../assets/quote-generator-image.svg";
 import iconBackgroundGenerator from "../assets/paintbrush-fill-image.svg";
 import iconTextGenerator from "../assets/text-configuration-image.svg";
 import { downloadImage } from "../hooks/functionUtils";
-import Title from "../components/Title";
+import { Title } from "../components/Title";
 import QuoteTab from "../containers/QuoteTab";
 import BackgroundTab from "../containers/BackgroundTab";
 import TextTab from "../containers/TextTab";

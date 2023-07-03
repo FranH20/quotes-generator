@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
+import tw from "twin.macro";
 
-const Title = ({name}) => {
-  return (
-    <h1 className="text-4xl font-bold mb-8 text-center">{name}</h1>
-  )
-}
+const H1 = tw.h1`text-4xl font-bold`;
+const HeaderTitle = tw(H1)`m-8 text-center`;
 
-export default Title
+export const TitleLogo = ({ name }) => <H1 tw="text-white">{name}</H1>;
+export const Title = ({ name }) => <HeaderTitle>{name}</HeaderTitle>;
+

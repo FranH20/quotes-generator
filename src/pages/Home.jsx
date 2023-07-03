@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
-import Title from "../components/Title";
+import { Title } from "../components/Title";
 import TitleWritting from "../components/TitleWritting";
 import QuotesContainer from "../containers/QuotesContainer";
 import { getQuoteEs } from "../hooks/fetchQuotes";

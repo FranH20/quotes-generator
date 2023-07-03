@@ -1,22 +1,23 @@
 import React from "react";
+
+import tw from "twin.macro";
 import { Outlet } from "react-router-dom";
-import Navigator from "../containers/Navigator";
+
 import Footer from "../containers/Footer";
-import citaImage from '../assets/cita-derecha-90.svg';
+import Navigator from "../containers/Navigator";
+
+const RootHeaderNavigation = tw.header`bg-color-secondary px-8`;
+const RootMainPageContainer = tw.main`bg-[url('/img/repeating-chevrons.svg')] px-8 min-h-screen`;
 
 function Root() {
   return (
     <>
-      <header className="flex bg-color-secondary justify-between px-8 ">
-        <div className="flex items-center">
-          <img src={citaImage} alt="Cita" className="w-9 mr-2"/>
-          <h1 className="m-auto my-8 text-4xl font-bold text-white">FRASES</h1>
-        </div>
+      <RootHeaderNavigation>
         <Navigator />
-      </header>
-      <main className="p-8 bg-[url('/img/repeating-chevrons.svg')] min-h-screen">
+      </RootHeaderNavigation>
+      <RootMainPageContainer>
         <Outlet />
-      </main>
+      </RootMainPageContainer>
       <Footer />
     </>
   );

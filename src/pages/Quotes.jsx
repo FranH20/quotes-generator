@@ -17,7 +17,7 @@ import {
   getQuoteCategory,
 } from "../redux/selectors";
 import { CATEGORIES } from "../hooks/constants";
-import Title from "../components/Title";
+import { Title } from "../components/Title";
 import * as Yup from "yup";
 import { ErrorMessage } from "../components/ErrorMessage";
 import Spinner from "../components/Spinner";

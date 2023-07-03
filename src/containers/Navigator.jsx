@@ -1,27 +1,46 @@
 import React from "react";
+
+import tw from "twin.macro";
 import { NavLink } from "react-router-dom";
-import { PATHLINKS } from "../hooks/constants";
+
+import { TitleLogo } from "../components/Title";
+import citaImage from "../assets/cita-derecha-90.svg";
+
+const NavigatorContainer = tw.nav`flex justify-between py-5`;
+const NavigatorItem = tw.div`flex items-center`;
+const NavigatorLogo = tw.img`w-9 mr-2`;
+const NavigatorLinks = tw.ul`
+  flex justify-around gap-5
+  [> li > a]:(text-2xl p-2 text-white font-semibold 
+  hover:text-color-third transition duration-200 hover:ease-in)`;
 
 const Navigator = () => {
   return (
-    <nav className="flex items-center">
-      <ul className="flex justify-around gap-5">
-        {PATHLINKS.map((link, index) => (
-          <li key={index}>
-            <NavLink
-              to={link}
-              className="text-lg text-white 
-            font-semibold 
-            hover:text-color-third
-            transition duration-300 hover:ease-in"
-            >
-              {link[0].toUpperCase() + link.substring(1)}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <>
+      <NavigatorContainer>
+        <NavigatorItem>
+          <NavigatorLogo src={citaImage} alt="Logo" />
+          <TitleLogo name="FRASES" />
+        </NavigatorItem>
+        <NavigatorItem>
+          <NavigatorLinks>
+            <li>
+              <NavLink to="inicio">Inicio</NavLink>
+            </li>
+            <li>
+              <NavLink to="generador">Generador</NavLink>
+            </li>
+            <li>
+              <NavLink to="citas">Citas</NavLink>
+            </li>
+            <li>
+              <NavLink to="sobre mi">Sobre mi</NavLink>
+            </li>
+          </NavigatorLinks>
+        </NavigatorItem>
+      </NavigatorContainer>
+    </>
   );
 };
 
-export default Navigator
+export default Navigator;
