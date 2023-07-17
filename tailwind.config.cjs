@@ -17,6 +17,7 @@ module.exports = {
         fourth: '#F1F6F5'
       },
       'white': '#FFFFFF',
+      'black': '#000000',
       red: colors.red,
       yellow: colors.yellow,
       blue: colors.blue,

@@ -7,7 +7,7 @@ const AboutMe = () => {
       <h1 className="text-4xl font-bold mb-8 text-center">
         Acerca de mí persona
       </h1>
-      <aside className="grid grid-cols-6 p-5 bg-vector-background">
+      <aside className="grid grid-cols-6 p-5 ">
         <article className="col-start-1 col-end-5 content-center">
           <p className="text-3xl leading-relaxed max-w-3xl text-justify">
             Hola mi nombre es <span className="font-bold text-color-primary">Franklin Carlos Huichi Contreras</span>, este proyecto es

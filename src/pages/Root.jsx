@@ -6,8 +6,8 @@ import { Outlet } from "react-router-dom";
 import Footer from "../containers/Footer";
 import Navigator from "../containers/Navigator";
 
-const RootHeaderNavigation = tw.header`bg-color-secondary px-8`;
-const RootMainPageContainer = tw.main`bg-[url('/img/repeating-chevrons.svg')] px-8 min-h-screen`;
+const RootHeaderNavigation = tw.header`bg-color-secondary px-8 w-full`;
+const RootMainPageContainer = tw.main`bg-vector-background px-8 min-h-screen`;
 
 function Root() {
   return (
@@ -15,10 +15,10 @@ function Root() {
       <RootHeaderNavigation>
         <Navigator />
       </RootHeaderNavigation>
-      <RootMainPageContainer>
+      {/* <RootMainPageContainer>
         <Outlet />
       </RootMainPageContainer>
-      <Footer />
+      <Footer /> */}
     </>
   );
 }

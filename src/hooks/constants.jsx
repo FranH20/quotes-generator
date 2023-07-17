@@ -1,8 +1,6 @@
 //API KEY
 export const API_KEY = import.meta.env.VITE_RAPID_API_KEY;
 
-//Links Names
-export const PATHLINKS = ["inicio", "generador", "citas", "sobre mi"];
 // API QUOTES
 export const HOST_QUOTE = "famous-quotes4.p.rapidapi.com";
 export const GET_RANDOM_QUOTES_URL = "https://famous-quotes4.p.rapidapi.com/random";
