@@ -31,7 +31,7 @@ const Logo = () => {
     <>
       <LogoContainer>
         <LogoImage alt="Logo" src="/img/cita-derecha-90.svg" />
-        <LogoTitle>Franseando</LogoTitle>
+        <LogoTitle>Fraseando</LogoTitle>
       </LogoContainer>
     </>
   );

@@ -8,6 +8,7 @@ import { Title } from "../components/Title";
 import QuoteTab from "../containers/QuoteTab";
 import BackgroundTab from "../containers/BackgroundTab";
 import TextTab from "../containers/TextTab";
+import PhraseGenerator from "../components/PhraseGenerator";
 
 const Generator = () => {
   const divContainerImage = useRef();
@@ -35,14 +36,6 @@ const Generator = () => {
 
   const handleTabsPage = (param) => {
     switch (param) {
-      case "FRASE":
-        return (
-          <QuoteTab
-            handleSubmit={handleSubmit}
-            setQuote={setQuote}
-            className="row-start-2 col-start-1 col-end-11"
-          />
-        );
       case "FONDO":
         return (
           <BackgroundTab
@@ -72,7 +65,8 @@ const Generator = () => {
     <>
       <Title name="Genera tu frase aqui" />
       <aside className="flex pb-5">
-        <section className="flex flex-col gap-y-5">
+        <PhraseGenerator />
+        {/* <section className="flex flex-col gap-y-5">
           <article className="flex justify-around">
             <ButtonBase
               name="Cuadrado"
@@ -136,7 +130,7 @@ const Generator = () => {
               onClick={handleDownload}
             />
           </article>
-        </section>
+        </section> */}
       </aside>
     </>
   );

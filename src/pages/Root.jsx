@@ -15,10 +15,10 @@ function Root() {
       <RootHeaderNavigation>
         <Navigator />
       </RootHeaderNavigation>
-      {/* <RootMainPageContainer>
+      <RootMainPageContainer>
         <Outlet />
       </RootMainPageContainer>
-      <Footer /> */}
+      <Footer />
     </>
   );
 }
