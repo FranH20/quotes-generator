@@ -9,6 +9,16 @@ import QuoteTab from "../containers/QuoteTab";
 import BackgroundTab from "../containers/BackgroundTab";
 import TextTab from "../containers/TextTab";
 import PhraseGenerator from "../components/PhraseGenerator";
+import GeneratorEditor from "../components/GeneratorEditor";
+import tw from "twin.macro";
+
+const Wrapper = tw.aside`
+    flex  
+    flex-row	
+    flex-wrap 
+    gap-y-10
+    mb-10
+`
 
 const Generator = () => {
   const divContainerImage = useRef();
@@ -17,6 +27,7 @@ const Generator = () => {
     text: "Aqui estara tu frase.",
     author: "Anónimo",
   });
+
   const [tabs, setTabs] = useState("FRASE");
 
   const handleSubmit = (values) => {
@@ -64,8 +75,9 @@ const Generator = () => {
   return (
     <>
       <Title name="Genera tu frase aqui" />
-      <aside className="flex pb-5">
+      <Wrapper>
         <PhraseGenerator />
+        <GeneratorEditor handleSubmit={handleSubmit} />
         {/* <section className="flex flex-col gap-y-5">
           <article className="flex justify-around">
             <ButtonBase
@@ -100,38 +112,38 @@ const Generator = () => {
             </div>
           </article>
         </section>
-        <section className="flex-1">
-          <article className="grid grid-cols-10 gap-y-5">
-            <ButtonQuote
-              name="Frase"
-              className="row-start-1 col-start-2 col-end-4 hover:bg-color-fourth flex-col"
-              img={iconQuoteGenerator}
-              classImage="w-10"
-              onClick={() => setTabs("FRASE")}
-            />
-            <ButtonQuote
-              name="Fondo"
-              className="row-start-1 col-start-5 col-end-7 hover:bg-color-fourth flex-col"
-              img={iconBackgroundGenerator}
-              classImage="w-10"
-              onClick={() => setTabs("FONDO")}
-            />
-            <ButtonQuote
-              name="Texto"
-              className="row-start-1 col-start-8 col-end-10 hover:bg-color-fourth flex-col"
-              img={iconTextGenerator}
-              classImage="w-10"
-              onClick={() => setTabs("TEXTO")}
-            />
-            {handleTabsPage(tabs)}
-            <ButtonBase
-              name="Descargar"
-              className="row-start-3 row-end-4 col-start-2 col-end-10 border-0 bg-color-primary text-white font-bold hover:bg-fuchsia-800"
-              onClick={handleDownload}
-            />
-          </article>
+          <section className="flex-1">
+            <article className="grid grid-cols-10 gap-y-5">
+              <ButtonQuote
+                name="Frase"
+                className="row-start-1 col-start-2 col-end-4 hover:bg-color-fourth flex-col"
+                img={iconQuoteGenerator}
+                classImage="w-10"
+                onClick={() => setTabs("FRASE")}
+              />
+              <ButtonQuote
+                name="Fondo"
+                className="row-start-1 col-start-5 col-end-7 hover:bg-color-fourth flex-col"
+                img={iconBackgroundGenerator}
+                classImage="w-10"
+                onClick={() => setTabs("FONDO")}
+              />
+              <ButtonQuote
+                name="Texto"
+                className="row-start-1 col-start-8 col-end-10 hover:bg-color-fourth flex-col"
+                img={iconTextGenerator}
+                classImage="w-10"
+                onClick={() => setTabs("TEXTO")}
+              />
+              {handleTabsPage(tabs)}
+              <ButtonBase
+                name="Descargar"
+                className="row-start-3 row-end-4 col-start-2 col-end-10 border-0 bg-color-primary text-white font-bold hover:bg-fuchsia-800"
+                onClick={handleDownload}
+              />
+            </article>
         </section> */}
-      </aside>
+      </Wrapper>
     </>
   );
 };

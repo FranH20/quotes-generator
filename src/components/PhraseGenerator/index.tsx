@@ -27,8 +27,7 @@ const topButtons = [
 
 const ButtonBase = tw.button`
     bg-color-fourth 
-    hover:bg-color-primary
-    text-color-secondary
+    hover:bg-color-secondary
     drop-shadow-lg
     text-center
     rounded-lg
@@ -56,7 +55,14 @@ const Creator = tw.div`
     inline-block 
     overflow-hidden
     text-white
-    
+`;
+
+const CreatorBox = tw.div`
+    overflow-hidden
+    transition-all
+    duration-300
+    w-[320px]
+    h-[320px]
 `;
 
 const PhraseGeneratorContainer = tw.section`
@@ -66,9 +72,9 @@ const PhraseGeneratorContainer = tw.section`
 const PhraseGenerator = () => {
   const phraseContainer = useRef() as React.MutableRefObject<HTMLDivElement>;
 
-  const handleSizeImage = (w = "320px", h = "320px") => {
-    phraseContainer.current.style.width = w;
-    phraseContainer.current.style.height = h;
+  const handleSizeImage = (width = "320px", height = "320px") => {
+    phraseContainer.current.style.width = width;
+    phraseContainer.current.style.height = height;
   };
 
   return (
@@ -84,19 +90,17 @@ const PhraseGenerator = () => {
         ))}
         <WrapperCreator>
           <Creator>
-            <div
-              ref={phraseContainer}
-              className="div-image-quote overflow-hidden transition-all duration-300"
-              style={{ width: "320px", height: "320px" }}
-            >
+            <CreatorBox ref={phraseContainer}>
               <div className="div-image-generator bg-[url('/img/background-example.jpg')] absolute w-full h-full bg-cover"></div>
               <div className="absolute left-2/4 top-[45%] -translate-x-2/4 -translate-y-1/2 w-full px-8">
-                <p className="text-2xl text-center">El único modo de hacer un gran trabajo es amar lo que haces</p>
+                <p className="text-2xl text-center">
+                  El único modo de hacer un gran trabajo es amar lo que haces
+                </p>
               </div>
               <span className="absolute left-2/4 top-[85%] -translate-x-2/4 text-xl">
-              - Steve Jobs
+                - Steve Jobs
               </span>
-            </div>
+            </CreatorBox>
           </Creator>
         </WrapperCreator>
       </WrapperGenerator>
