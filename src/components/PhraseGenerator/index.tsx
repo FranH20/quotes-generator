@@ -1,29 +1,9 @@
 import React, { useRef } from "react";
 import tw from "twin.macro";
-
-const topButtons = [
-  {
-    name: "Cuadrado",
-    size: {
-      width: "320px",
-      height: "320px",
-    },
-  },
-  {
-    name: "Horizontal",
-    size: {
-      width: "470px",
-      height: "550px",
-    },
-  },
-  {
-    name: "Vertical",
-    size: {
-      width: "470px",
-      height: "340px",
-    },
-  },
-];
+import {
+  CLASSNAME_GENERATOR_IMAGE,
+  topButtons,
+} from "../../utils/constants/imageGenerator";
 
 const ButtonBase = tw.button`
     bg-color-fourth 
@@ -65,6 +45,36 @@ const CreatorBox = tw.div`
     h-[320px]
 `;
 
+const CreatorBoxImage = tw.div`
+  bg-[url('/img/background-example.jpg')] 
+  absolute 
+  bg-cover
+  w-full 
+  h-full 
+`;
+
+const CreatorBoxTitleQuote = tw.div`
+  -translate-x-2/4 
+  -translate-y-1/2 
+  top-[45%] 
+  absolute 
+  left-2/4 
+  w-full 
+  px-8
+  [> p]:(
+    text-2xl 
+    text-center
+  )
+`;
+
+const CreatorBoxAuthorQuote = tw.span`
+  -translate-x-2/4 
+  top-[85%] 
+  absolute 
+  left-2/4 
+  text-xl
+`;
+
 const PhraseGeneratorContainer = tw.section`
     w-full
 `;
@@ -90,16 +100,14 @@ const PhraseGenerator = () => {
         ))}
         <WrapperCreator>
           <Creator>
-            <CreatorBox ref={phraseContainer}>
-              <div className="div-image-generator bg-[url('/img/background-example.jpg')] absolute w-full h-full bg-cover"></div>
-              <div className="absolute left-2/4 top-[45%] -translate-x-2/4 -translate-y-1/2 w-full px-8">
-                <p className="text-2xl text-center">
+            <CreatorBox ref={phraseContainer} className={CLASSNAME_GENERATOR_IMAGE}>
+              <CreatorBoxImage  />
+              <CreatorBoxTitleQuote>
+                <p>
                   El único modo de hacer un gran trabajo es amar lo que haces
                 </p>
-              </div>
-              <span className="absolute left-2/4 top-[85%] -translate-x-2/4 text-xl">
-                - Steve Jobs
-              </span>
+              </CreatorBoxTitleQuote>
+              <CreatorBoxAuthorQuote>- Steve Jobs</CreatorBoxAuthorQuote>
             </CreatorBox>
           </Creator>
         </WrapperCreator>

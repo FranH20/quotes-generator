@@ -1,27 +1,34 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import QuotesContainer from "../containers/QuotesContainer";
-import { ButtonBase, ButtonQuote } from "../components/ButtonQuote";
+import { ButtonBase } from "../components/ButtonQuote";
 import { ErrorMessage } from "../components/ErrorMessage";
+import { useDispatch, useSelector } from "react-redux";
+import { getQuoteData } from "../redux/selectors";
+import { getQuote } from "../redux/actions/quote-actions";
 
 const QuoteSchema = Yup.object().shape({
   text: Yup.string().required("Requerido"),
   author: Yup.string().required("Requerido"),
 });
 
-const QuoteTab = ({ handleSubmit, setQuote, className }) => {
-    const buttonRef = useRef();
+const QuoteTab = ({ handleSubmit, className }) => {
+  const buttonRef = useRef();
+  const dispatch = useDispatch();
+  const authorInformation = useSelector(getQuoteData);
+  const [quote, setQuote] = useState();
 
-    useEffect(() => {
-        buttonRef.current.type = "submit";
-    }, [])
-    
+  useEffect(() => {
+    dispatch(getQuote);
+    buttonRef.current.type = "submit";
+  }, []);
+
   return (
     <Formik
       initialValues={{ text: "", author: "" }}
       validationSchema={QuoteSchema}
-      onSubmit={handleSubmit}
+      onSubmit={() => {}}
     >
       {({ errors, touched }) => (
         <Form className={`${className} grid grid-cols-10 grid-rows-10 gap-y-4`}>

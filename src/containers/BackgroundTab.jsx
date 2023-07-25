@@ -1,42 +1,84 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { CLASSNAME_GENERATOR_IMAGE } from "../utils/constants/imageGenerator";
+import {
+  elementImageChange,
+  elementOpacityChange,
+  getElementByClassName,
+} from "../utils/functions/Elements";
+import tw from "twin.macro";
+import { Label } from "../components/Label";
+import { InputFile, InputRange } from "../components/Input";
 
-const BackgroundTab = ({ className, divContainerImage }) => {
-  const onFileImageChange = (event) => {
-    const divImage = divContainerImage.current.firstChild;
-    const url = URL.createObjectURL(event.target.files[0]);
-    divImage.style.backgroundImage = `url("${url}")`;
-  };
+const Wrapper = tw.article`
+  grid 
+  grid-cols-10 
+  gap-y-2
+`;
 
-  const onOpacityChange = (event) => {
-    const divImage = divContainerImage.current.firstChild;
-    divImage.style.filter = `brightness(${event.target.value}%)`;
-  };
+const LabelBackgroundImage = tw(Label)`
+  row-start-1 
+  col-start-2 
+  col-end-10 
+`;
+
+const LabelBackgroundOpacity = tw(Label)`
+  row-start-4 
+  col-start-2 
+  col-end-10
+`;
+
+const InputFileBackground = tw(InputFile)`
+  row-start-2
+  col-start-2
+  col-end-10
+`;
+
+const InputRangeBackground = tw(InputRange)`
+  row-start-5 
+  col-start-2 
+  col-end-10 
+`;
+
+const BackgroundTab = ({ className }) => {
+  let containerElement = null;
+
+  useEffect(() => {
+    containerElement = getElementByClassName(CLASSNAME_GENERATOR_IMAGE);
+  }, []);
+
+  const onUploadImage = (event) =>
+    elementImageChange(event, containerElement.firstChild);
+
+  const onOpacityChange = (event) =>
+    elementOpacityChange(event, containerElement.firstChild);
 
   return (
-    <article className={`${className} grid grid-cols-10 gap-y-2`}>
-      <h3 className="row-start-1 col-start-2 col-end-10 text-l">
-        Subir una imagen:
-      </h3>
-      <input
+    <Wrapper className={className}>
+      <LabelBackgroundImage>Subir una imagen:</LabelBackgroundImage>
+      <InputFileBackground
         type="file"
         accept=".jpg,.jpeg,.png"
-        onChange={onFileImageChange}
-        className="row-start-2 col-start-2 col-end-10 bg-gray-200 border rounded w-full cursor-pointer
-        file:border-none file:cursor-pointer file:bg-color-secondary file:text-white file:py-2 file:rounded file:mr-4 file:px-2
-        hover:file:bg-color-third "
+        onChange={onUploadImage}
+        className="
+        file:bg-color-secondary 
+        file:border-none 
+        file:cursor-pointer 
+        file:mr-4 
+        file:px-2
+        file:py-2 
+        file:rounded 
+        file:text-white 
+        hover:file:bg-color-third"
       />
-      <h3 className="row-start-4 col-start-2 col-end-10 text-l">
-        Opacidad de la imagen
-      </h3>
-      <input
+      <LabelBackgroundOpacity>Opacidad de la imagen</LabelBackgroundOpacity>
+      <InputRangeBackground
         onChange={onOpacityChange}
         type="range"
         min="0"
         max="200"
-        className="row-start-5 col-start-2 col-end-10 text-l"
         defaultValue="50"
       />
-    </article>
+    </Wrapper>
   );
 };
 

@@ -1,31 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FONTS } from "../hooks/constants";
+import { CLASSNAME_GENERATOR_IMAGE } from "../utils/constants/imageGenerator";
+import {
+  elementFontFamilyChange,
+  elementFontSizeChange,
+  elementFontWeightChange,
+  elementTextColorChange,
+  getElementByClassName,
+} from "../utils/functions/Elements";
 
-const TextTab = ({ className, divContainerImage }) => {
-  function changeTextColor(event) {
-    divContainerImage.current.style.color = event.target.value;
-  }
+const TextTab = ({ className }) => {
+  let containerElement = null;
 
-  function changeFontFamily(event) {
-    divContainerImage.current.style.fontFamily = event.target.value;
-  }
+  useEffect(() => {
+    containerElement = getElementByClassName(CLASSNAME_GENERATOR_IMAGE);
+  }, []);
 
-  function changeSizeQuote(event) {
-    let text =
-      divContainerImage.current.getElementsByTagName("div")[1].firstChild;
-    text.style.fontSize = event.target.value + "px";
-  }
-  function changeSizeAuthor(event) {
-    let author = divContainerImage.current.getElementsByTagName("span")[0];
-    author.style.fontSize = event.target.value + "px";
-  }
-  function changeFontWeight(event) {
-    let text =
-      divContainerImage.current.getElementsByTagName("div")[1].firstChild;
-    let author = divContainerImage.current.getElementsByTagName("span")[0];
-    text.style.fontWeight = event.target.value;
-    author.style.fontWeight = event.target.value;
-  }
+  const quoteTag = (element) => element.getElementsByTagName("p")[0];
+  const authorTag = (element) => element.getElementsByTagName("span")[0];
+
+  const changeTextColor = (event) =>
+    elementTextColorChange(event, containerElement);
+
+  const changeFontFamily = (event) =>
+    elementFontFamilyChange(event, containerElement.parentElement);
+
+  const changeSizeQuote = (event) =>
+    elementFontSizeChange(event, quoteTag(containerElement));
+
+  const changeSizeAuthor = (event) =>
+    elementFontSizeChange(event, authorTag(containerElement));
+
+  const changeFontWeight = (event) => {
+    elementFontWeightChange(event, quoteTag(containerElement));
+    elementFontWeightChange(event, authorTag(containerElement));
+  };
+
   return (
     <article className={`${className} grid grid-cols-10  gap-y-5`}>
       <div className="row-start-1 col-start-2 col-end-10 flex flex-col gap-y-2">

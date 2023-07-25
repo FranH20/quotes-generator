@@ -85,6 +85,7 @@ const Wrapper = styled.div(() => [
   tw`
     bg-color-secondary
     h-full
+    z-50
     `,
   ({ variant = "mobile" }) => containerVariants[variant],
 ]);
@@ -127,7 +128,7 @@ const NavItems = () => {
         <ListContainer>
           {menuItems.map(({ path, title }) => (
             <NavItem key={title}>
-              <NavLink to={path}>{title}</NavLink>
+              <NavLink to={path} onClick={closeNavigator}>{title}</NavLink>
             </NavItem>
           ))}
         </ListContainer>

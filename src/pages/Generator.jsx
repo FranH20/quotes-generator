@@ -77,7 +77,7 @@ const Generator = () => {
       <Title name="Genera tu frase aqui" />
       <Wrapper>
         <PhraseGenerator />
-        <GeneratorEditor handleSubmit={handleSubmit} />
+        <GeneratorEditor />
         {/* <section className="flex flex-col gap-y-5">
           <article className="flex justify-around">
             <ButtonBase
