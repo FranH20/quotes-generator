@@ -45,7 +45,7 @@ const QuotesContainer = ({
       promise
         .then((data) => setQuote(data))
         .then(onLoading(false))
-        .catch((err) => onLoading(undefined));
+        .catch(() => onLoading(undefined));
     }, 2000);
   };
 

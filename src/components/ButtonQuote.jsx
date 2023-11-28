@@ -90,44 +90,44 @@ export const ButtonQuotePurple = ({ name, onClick, children }) => (
 
 ButtonQuote.propTypes = {
   name: PropTypes.string,
-  onClick: PropTypes.string,
-  children: PropTypes.React,
+  onClick: PropTypes.func,
+  children: PropTypes.element,
   color: PropTypes.string,
 };
 
 ButtonQuoteRed.propTypes = {
   name: PropTypes.string.isRequired,
-  children: PropTypes.React,
+  children: PropTypes.element,
   onClick: PropTypes.func,
 };
 
 ButtonQuoteYellow.propTypes = {
   name: PropTypes.string.isRequired,
-  children: PropTypes.React,
+  children: PropTypes.element,
   onClick: PropTypes.func,
 };
 
 ButtonQuoteBlue.propTypes = {
   name: PropTypes.string.isRequired,
-  children: PropTypes.React,
+  children: PropTypes.element,
   onClick: PropTypes.func,
 };
 
 ButtonQuoteGray.propTypes = {
   name: PropTypes.string.isRequired,
-  children: PropTypes.React,
+  children: PropTypes.element,
   onClick: PropTypes.func,
 };
 
 ButtonQuoteAmber.propTypes = {
   name: PropTypes.string.isRequired,
-  children: PropTypes.React,
+  children: PropTypes.element,
   onClick: PropTypes.func,
 };
 
 ButtonQuoteGreen.propTypes = {
   name: PropTypes.string.isRequired,
-  children: PropTypes.React,
+  children: PropTypes.element,
   onClick: PropTypes.func,
 };
 

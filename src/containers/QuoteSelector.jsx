@@ -16,7 +16,7 @@ const QuoteSelector = () => {
         setQuote={setQuote}
         onLoading={setLoading}
       />
-      <section className="row-start-4 row-end-5 p-5 bg-white border rounded">
+      <section className="lg:col-start-2 lg:row-start-3 row-start-4 row-end-5 p-5 bg-white border rounded">
         {loading ? (
           <CardQuoteSkeleton />
         ) : (
