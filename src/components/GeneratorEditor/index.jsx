@@ -40,7 +40,7 @@ const handleTabsPage = (param) => {
 
 const GeneratorEditor = ( ) => {
   
-  const [tabs, setTabs] = useState('FRASE');
+  const [tab, setTab] = useState('FRASE');
 
   const handleDownload = async () => {
     const divImage = document.querySelector(`.${CLASSNAME_GENERATOR_IMAGE}`);
@@ -51,8 +51,8 @@ const GeneratorEditor = ( ) => {
   return (
     <Wrapper>
       <WrapperContainer>
-        <ButtonsContainer setTabs={setTabs} />
-        {handleTabsPage(tabs)}
+        <ButtonsContainer tab={tab} setTab={setTab} />
+        {handleTabsPage(tab)}
         <ButtonBase
           name="Descargar"
           className="row-start-3 row-end-4 col-start-2 col-end-10 border-0 bg-color-primary text-white font-bold hover:bg-fuchsia-800"

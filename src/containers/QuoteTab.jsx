@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import QuotesContainer from "../containers/QuotesContainer";
@@ -6,18 +6,41 @@ import { ButtonBase } from "../components/ButtonQuote";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { useDispatch, useSelector } from "react-redux";
 import { getQuoteData } from "../redux/selectors";
-import { getQuote } from "../redux/actions/quote-actions";
+import { addQuote, getQuote } from "../redux/actions/quote-actions";
+import tw from "twin.macro";
+import { Label } from "../components/Label";
 
 const QuoteSchema = Yup.object().shape({
   text: Yup.string().required("Requerido"),
   author: Yup.string().required("Requerido"),
 });
 
-const QuoteTab = ({ handleSubmit, className }) => {
+const LabelRepoQuote = tw(Label)`
+  row-start-1 
+  col-start-2 
+  col-end-10
+`;
+const LabelPhraseQuote = tw(Label)`
+  row-start-4 
+  col-start-2 
+  col-end-10
+`;
+
+const WrapperPhrase = tw.div`
+  row-start-5 
+  col-start-2 
+  col-end-10
+`;
+const WrapperAuthor = tw.div`
+  row-start-6 
+  col-start-2 
+  col-end-10
+`;
+
+const QuoteTab = ({ className }) => {
   const buttonRef = useRef();
   const dispatch = useDispatch();
   const authorInformation = useSelector(getQuoteData);
-  const [quote, setQuote] = useState();
 
   useEffect(() => {
     dispatch(getQuote);
@@ -26,26 +49,20 @@ const QuoteTab = ({ handleSubmit, className }) => {
 
   return (
     <Formik
-      initialValues={{ text: "", author: "" }}
+      initialValues={ authorInformation }
       validationSchema={QuoteSchema}
-      onSubmit={() => {}}
+      onSubmit={(values) => { dispatch(addQuote(values)) }}
     >
       {({ errors, touched }) => (
         <Form className={`${className} grid grid-cols-10 grid-rows-10 gap-y-4`}>
-          <label className="row-start-1 col-start-2 col-end-10 text-l">
-            Selecciona un tema para tu frase:
-          </label>
+          <LabelRepoQuote>Selecciona un tema para tu frase:</LabelRepoQuote>
           <QuotesContainer
             className="row-start-2 col-start-2 col-end-10 flex flex-wrap gap-3 content-start"
-            setQuote={setQuote}
           />
-          <label
-            htmlFor="cita"
-            className="row-start-4 col-start-2 col-end-10 text-l"
-          >
+          <LabelPhraseQuote htmlFor="cita">
             Escriba su propia frase:
-          </label>
-          <div className="row-start-5 col-start-2 col-end-10">
+          </LabelPhraseQuote>
+          <WrapperPhrase>
             <Field
               id="text"
               name="text"
@@ -55,8 +72,8 @@ const QuoteTab = ({ handleSubmit, className }) => {
             {errors.text && touched.text ? (
               <ErrorMessage error={errors.text} />
             ) : null}
-          </div>
-          <div className="row-start-6 col-start-2 col-end-10 ">
+          </WrapperPhrase>
+          <WrapperAuthor>
             <Field
               id="author"
               name="author"
@@ -67,7 +84,7 @@ const QuoteTab = ({ handleSubmit, className }) => {
             {errors.author && touched.author ? (
               <ErrorMessage error={errors.author} />
             ) : null}
-          </div>
+          </WrapperAuthor>
           <ButtonBase
             ref={buttonRef}
             name="Agregar"

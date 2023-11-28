@@ -13,3 +13,8 @@ export const InputFile = tw(Input)`
 `;
 
 export const InputRange = tw(Input)``;
+
+export const InputColor = tw(Input)`
+  cursor-pointer
+`;
+

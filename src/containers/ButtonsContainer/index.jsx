@@ -6,29 +6,32 @@ import iconQuoteGenerator from "../../assets/quote-generator-image.svg";
 import iconBackgroundGenerator from "../../assets/paintbrush-fill-image.svg";
 import iconTextGenerator from "../../assets/text-configuration-image.svg";
 
-const ButtonsContainer = ({ setTabs }) => {
+const ButtonsContainer = ({ tab, setTab }) => {
   return (
     <>
       <ButtonQuote
         name="Frase"
-        className="row-start-1 col-start-2 col-end-4 hover:bg-color-fourth flex-col"
+        hasBg={tab === "FRASE"}
+        className="row-start-1 col-start-2 col-end-4 flex-col"
         img={iconQuoteGenerator}
         classImage="w-10"
-        onClick={() => setTabs("FRASE")}
+        onClick={() => setTab("FRASE")}
       />
       <ButtonQuote
         name="Fondo"
-        className="row-start-1 col-start-5 col-end-7 hover:bg-color-fourth flex-col"
+        hasBg={tab === "FONDO"}
+        className="row-start-1 col-start-5 col-end-7 flex-col"
         img={iconBackgroundGenerator}
         classImage="w-10"
-        onClick={() => setTabs("FONDO")}
+        onClick={() => setTab("FONDO")}
       />
       <ButtonQuote
         name="Texto"
-        className="row-start-1 col-start-8 col-end-10 hover:bg-color-fourth flex-col"
+        hasBg={tab === "TEXTO"}
+        className="row-start-1 col-start-8 col-end-10 flex-col"
         img={iconTextGenerator}
         classImage="w-10"
-        onClick={() => setTabs("TEXTO")}
+        onClick={() => setTab("TEXTO")}
       />
     </>
   );

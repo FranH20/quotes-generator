@@ -8,6 +8,60 @@ import {
   elementTextColorChange,
   getElementByClassName,
 } from "../utils/functions/Elements";
+import tw from "twin.macro";
+import { Label } from "../components/Label";
+import { InputColor, InputRange } from "../components/Input";
+import { Select } from "../components/Select";
+
+const Wrapper = tw.article`
+  grid 
+  grid-cols-10  
+  gap-y-2
+`;
+
+const LabelTextColor = tw(Label)`
+  row-start-1 
+  col-start-2 
+  col-end-10
+`;
+
+const InputColorText = tw(InputColor)`
+  row-start-2
+  col-start-2
+  col-end-10
+`;
+
+const LabelFontText = tw(Label)`
+  row-start-3
+  col-start-2
+  col-end-10
+`;
+
+const SelectText = tw(Select)`
+  row-start-4
+  col-start-2
+  col-end-10
+`;
+
+const WrapperFontSize = tw.div`
+  row-start-5 
+  col-start-2 
+  col-end-10 
+  flex 
+  flex-col 
+  gap-y-2
+`;
+
+const LabelFontTypeText = tw(Label)`
+  row-start-6 
+  col-start-2 
+  col-end-10 
+`;
+const SelectFonts = tw(Select)`
+  row-start-7
+  col-start-2 
+  col-end-10 
+`;
 
 const TextTab = ({ className }) => {
   let containerElement = null;
@@ -37,68 +91,50 @@ const TextTab = ({ className }) => {
   };
 
   return (
-    <article className={`${className} grid grid-cols-10  gap-y-5`}>
-      <div className="row-start-1 col-start-2 col-end-10 flex flex-col gap-y-2">
-        <h3 className="text-l">Cambiar el color del texto:</h3>
-        <input
-          onChange={changeTextColor}
-          type="color"
-          className="cursor-pointer w-full"
-          value="#000000"
-        />
-      </div>
-      <div className="row-start-2 col-start-2 col-end-10 flex flex-col gap-y-2">
-        <h3 className="text-l">Cambiar la fuente:</h3>
-        <select
-          name="fonts"
-          onChange={changeFontFamily}
-          className="bg-gray-200 cursor-pointer px-3 py-1.5 rounded border border-solid
-        appearance-none text-gray-700 focus:border-color-secondary focus:outline-none"
-        >
-          <option defaultValue="Nunito">Escoge tu fuente</option>
-          {FONTS.map((value, index) => (
-            <option key={index} value={value}>
-              {value}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="row-start-3 col-start-2 col-end-10 flex flex-col gap-y-2">
-        <h3 className="text-l">Cambiar el tamaño de la fuente:</h3>
-        Frase
-        <input
+    <Wrapper className={className}>
+      <LabelTextColor>Cambiar el color del texto:</LabelTextColor>
+      <InputColorText
+        type="color"
+        onChange={changeTextColor}
+        className="cursor-pointer w-full"
+        value="#000000"
+      />
+      <LabelFontText>Cambiar la fuente:</LabelFontText>
+      <SelectText name="fonts" onChange={changeFontFamily}>
+        <option defaultValue="Nunito">Escoge tu fuente</option>
+        {FONTS.map((value) => (
+          <option key={value} value={value}>
+            {value}
+          </option>
+        ))}
+      </SelectText>
+      <WrapperFontSize>
+        <Label>Cambiar el tamaño de la fuente:</Label>
+        <Label>Frase</Label>
+        <InputRange
           onChange={changeSizeQuote}
           type="range"
           min="0"
           max="160"
-          className="text-l"
           defaultValue="80"
         />
-        Autor
-        <input
+        <Label>Autor</Label>
+        <InputRange
           onChange={changeSizeAuthor}
           type="range"
           min="0"
           max="100"
-          className="text-l"
           defaultValue="80"
         />
-      </div>
-      <div className="row-start-4 col-start-2 col-end-10 flex flex-col gap-y-2">
-        <h3 className="text-l">Cambiar el tipo de fuente:</h3>
-        <select
-          name="fonts"
-          onChange={changeFontWeight}
-          className="bg-gray-200 cursor-pointer px-3 py-1.5 rounded border border-solid
-        appearance-none text-gray-700 focus:border-color-secondary focus:outline-none"
-        >
-          <option defaultValue="normal">Escoge tu tipo de fuente</option>
-          <option value="normal">Normal</option>
-          <option value="bold">Negrita</option>
-          <option value="lighter">Ligero</option>
-        </select>
-      </div>
-    </article>
+      </WrapperFontSize>
+      <LabelFontTypeText>Cambiar el tipo de fuente:</LabelFontTypeText>
+      <SelectFonts name="weightFonts" onChange={changeFontWeight}>
+        <option defaultValue="normal">Escoge tu tipo de fuente</option>
+        <option value="normal">Normal</option>
+        <option value="bold">Negrita</option>
+        <option value="lighter">Ligero</option>
+      </SelectFonts>
+    </Wrapper>
   );
 };
 

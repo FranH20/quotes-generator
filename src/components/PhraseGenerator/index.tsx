@@ -1,13 +1,17 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import tw from "twin.macro";
 import {
   CLASSNAME_GENERATOR_IMAGE,
   topButtons,
 } from "../../utils/constants/imageGenerator";
+import { useDispatch, useSelector } from "react-redux";
+import { getQuoteData } from "../../redux/selectors";
+import { getQuote } from "../../redux/actions/quote-actions";
+import { useMediaQuery } from "react-responsive";
+import { SCREENS } from "../../utils/responsive";
 
 const ButtonBase = tw.button`
     bg-color-fourth 
-    hover:bg-color-secondary
     drop-shadow-lg
     text-center
     rounded-lg
@@ -80,11 +84,25 @@ const PhraseGeneratorContainer = tw.section`
 `;
 
 const PhraseGenerator = () => {
+  const dispatch = useDispatch();
+  const quote = useSelector(getQuoteData);
+  const isDesktop = useMediaQuery({ minWidth: SCREENS.md });
+
+  useEffect(() => {
+    dispatch(getQuote);
+  }, []);
+
   const phraseContainer = useRef() as React.MutableRefObject<HTMLDivElement>;
 
-  const handleSizeImage = (width = "320px", height = "320px") => {
-    phraseContainer.current.style.width = width;
-    phraseContainer.current.style.height = height;
+  const handleSizeImage = (width = 320, height = 320) => {
+    let x = window.matchMedia(`(min-width: ${SCREENS.lg})`);
+    if (x.matches) {
+      width = width * 2;
+      height = height * 2;
+      console.table([width, height])
+    }
+    phraseContainer.current.style.width = width + "px";
+    phraseContainer.current.style.height = height + "px";
   };
 
   return (
@@ -93,21 +111,23 @@ const PhraseGenerator = () => {
         {topButtons.map(({ name, size }) => (
           <ButtonBase
             key={name}
-            onClick={() => handleSizeImage(size.width, size.height)}
+            className="hover:bg-color-secondary hover:text-white focus:bg-color-secondary focus:text-white"
+            onClick={(e) => handleSizeImage(size.width, size.height)}
           >
             {name}
           </ButtonBase>
         ))}
         <WrapperCreator>
           <Creator>
-            <CreatorBox ref={phraseContainer} className={CLASSNAME_GENERATOR_IMAGE}>
-              <CreatorBoxImage  />
+            <CreatorBox
+              ref={phraseContainer}
+              className={CLASSNAME_GENERATOR_IMAGE}
+            >
+              <CreatorBoxImage />
               <CreatorBoxTitleQuote>
-                <p>
-                  El único modo de hacer un gran trabajo es amar lo que haces
-                </p>
+                <p>{quote.text}</p>
               </CreatorBoxTitleQuote>
-              <CreatorBoxAuthorQuote>- Steve Jobs</CreatorBoxAuthorQuote>
+              <CreatorBoxAuthorQuote>{quote.author}</CreatorBoxAuthorQuote>
             </CreatorBox>
           </Creator>
         </WrapperCreator>

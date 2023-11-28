@@ -1,12 +1,19 @@
-import React from "react";
-import { ButtonQuote } from "../components/ButtonQuote";
+import {
+  ButtonQuoteRed,
+  ButtonQuoteYellow,
+  ButtonQuoteBlue,
+  ButtonQuoteGray,
+  ButtonQuoteAmber,
+  ButtonQuoteGreen,
+  ButtonQuotePurple,
+} from "../components/ButtonQuote";
 import iconMarvel from "../assets/icons/marvel-icon.svg";
 import iconChuckNorris from "../assets/icons/chuck-norris-icon.svg";
 import iconFamous from "../assets/icons/famous-icon.svg";
 import iconDonaldTrump from "../assets/icons/donald-trump-icon.svg";
 import iconAnime from "../assets/icons/anime-icon.svg";
 import iconBreakingBad from "../assets/icons/breaking-bad-icon.svg";
-import iconQuoteEs from "../assets/icons/quote-es-icon.svg"
+import iconQuoteEs from "../assets/icons/quote-es-icon.svg";
 import {
   getQuoteNorris,
   getMarvel,
@@ -14,57 +21,107 @@ import {
   getRandomTrump,
   getRandomAnimechan,
   getRandomBreakingBad,
-  getQuoteEs
+  getQuoteEs,
 } from "../hooks/fetchQuotes";
+import PropTypes from "prop-types";
+import useFetch from "../hooks/useFetch";
+import APIENDPOINTS from "../hooks/apiEndpoints";
+import { QuoteInSpanish } from "../hooks/quotesHooks";
 
-const QuotesContainer = ({ className, setQuote }) => {
+const LogoButton = ({ img, name }) => (
+  <img src={img} alt={`Button logo of ${name}`} className="w-5" />
+);
+
+const QuotesContainer = ({
+  className,
+  setQuote,
+  quoteInformation,
+  onLoading,
+}) => {
+  const stateLoading = (promise) => {
+    onLoading(true);
+    setQuote({});
+    setTimeout(() => {
+      promise
+        .then((data) => setQuote(data))
+        .then(onLoading(false))
+        .catch((err) => onLoading(undefined));
+    }, 2000);
+  };
+
+  const onPromiseQuoteOfTheDay = async () => {
+    return await getQuoteEs();
+  };
+
+  const onPromiseBreakingBad = async () => {
+    return await getRandomBreakingBad();
+  };
+
+  const onPromiseAnimeChan = async () => {
+    return await getRandomAnimechan();
+  };
+
+  const onPromiseDonaldTrump = async () => {
+    return await getRandomTrump();
+  };
+
+  const onPromiseFamousPeople = async () => {
+    return await getRandomNinja();
+  };
+
+  const onPromiseChuckNorris = async () => {
+    return await getQuoteNorris();
+  };
+
+  const onPromiseMarvel = async () => {
+    return await getMarvel();
+  };
+
+  const onFetchQuoteOfTheDay = () => stateLoading(onPromiseQuoteOfTheDay());
+  const onFetchBreakingBad = () => stateLoading(onPromiseBreakingBad());
+  const onFetchAnimechan = () => stateLoading(onPromiseAnimeChan());
+  const onFetchDonaldTrump = () => stateLoading(onPromiseDonaldTrump());
+  const onFetchFamousPeople = () => stateLoading(onPromiseFamousPeople());
+  const onFetchChuckNorris = () => stateLoading(onPromiseChuckNorris());
+  const onFetchMarvel = () => stateLoading(onPromiseMarvel());
+
   return (
     <section className={className}>
-      <ButtonQuote
-        name="Marvel"
-        className="bg-red-600 hover:bg-red-500 text-white"
-        img={iconMarvel}
-        onClick={() => getMarvel(setQuote)}
-      />
-      <ButtonQuote
-        name="Chuck Norris"
-        className="bg-yellow-400 hover:bg-yellow-300 text-black"
-        img={iconChuckNorris}
-        onClick={() => getQuoteNorris(setQuote)}
-      />
-      <ButtonQuote
-        name="Famous People"
-        className="bg-blue-700 hover:bg-blue-600 text-white"
-        img={iconFamous}
-        onClick={() => getRandomNinja(setQuote)}
-      />
-      <ButtonQuote
-        name="Donald Trump"
-        className="bg-gray-200 hover:bg-gray-100 text-black"
-        img={iconDonaldTrump}
-        onClick={() => getRandomTrump(setQuote)}
-      />
-      <ButtonQuote
-        name="Animechan"
-        className="bg-amber-500 hover:bg-amber-400 text-black"
-        img={iconAnime}
-        onClick={() => getRandomAnimechan(setQuote)}
-      />
-
-      <ButtonQuote
-        name="Breaking Bad"
-        className="bg-green-500 hover:bg-green-400 text-black"
-        img={iconBreakingBad}
-        onClick={() => getRandomBreakingBad(setQuote)}
-      />
-      <ButtonQuote 
-        name="Quote of the day"
-        className="bg-purple-800 text-white"
-        img={iconQuoteEs}
-        onClick={() => getQuoteEs(setQuote)}
-      />
+      <ButtonQuoteRed name="Marvel" onClick={onFetchMarvel}>
+        <LogoButton img={iconMarvel} name="Marvel" />
+      </ButtonQuoteRed>
+      <ButtonQuoteYellow name="Chuck Norris" onClick={onFetchChuckNorris}>
+        <LogoButton img={iconChuckNorris} name="Chuck Norris" />
+      </ButtonQuoteYellow>
+      <ButtonQuoteBlue name="Famous People" onClick={onFetchFamousPeople}>
+        <LogoButton img={iconFamous} name="Famous People" />
+      </ButtonQuoteBlue>
+      <ButtonQuoteGray name="Donald Trump" onClick={onFetchDonaldTrump}>
+        <LogoButton img={iconDonaldTrump} name="Donald Trump" />
+      </ButtonQuoteGray>
+      <ButtonQuoteAmber name="Animechan" onClick={onFetchAnimechan}>
+        <LogoButton img={iconAnime} name="Animechan" />
+      </ButtonQuoteAmber>
+      <ButtonQuoteGreen name="Breaking Bad" onClick={onFetchBreakingBad}>
+        <LogoButton img={iconBreakingBad} name="Breaking Bad" />
+      </ButtonQuoteGreen>
+      <ButtonQuotePurple name="Quote of the day" onClick={onFetchQuoteOfTheDay}>
+        <LogoButton img={iconQuoteEs} name="Quote of the day" />
+      </ButtonQuotePurple>
     </section>
   );
+};
+
+QuotesContainer.propTypes = {
+  className: PropTypes.string,
+  setQuote: PropTypes.func,
+  quoteInformation: PropTypes.func,
+  onLoading: PropTypes.func,
+};
+
+LogoButton.propTypes = {
+  img: PropTypes.string,
+  name: PropTypes.string,
 };
 
 export default QuotesContainer;

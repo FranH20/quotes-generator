@@ -3,22 +3,22 @@ export const topButtons = [
   {
     name: "Cuadrado",
     size: {
-      width: "320px",
-      height: "320px",
+      width: 320,
+      height: 320,
     },
   },
   {
     name: "Horizontal",
     size: {
-      width: "470px",
-      height: "550px",
+      width: 470,
+      height: 550,
     },
   },
   {
     name: "Vertical",
     size: {
-      width: "470px",
-      height: "340px",
+      width: 470,
+      height: 340,
     },
   },
 ];

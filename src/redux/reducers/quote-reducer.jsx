@@ -4,7 +4,7 @@ import {
 } from "../actions/quote-actions";
 
 const initialState = {
-  text: "",
+  text: "Aqui estara tu frase",
   author: "",
 };
 
