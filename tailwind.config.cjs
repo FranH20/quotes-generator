@@ -8,10 +8,13 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
       color: {
-        primary: "#472183",
-        secondary: "#4B56D2",
-        third: "#82C3EC",
-        fourth: "#F1F6F5",
+        primary: "#BEE3AE",
+        secondary: "#F8F7F0",
+        third: "#F2F0E4",
+        fourth: "#96DED1",
+        lightGreen: "#112707",
+        hardGreen: "#6DA655",
+        blackSpace: "#0D100B"
       },
       white: "#FFFFFF",
       black: "#000000",

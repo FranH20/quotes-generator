@@ -3,7 +3,7 @@ import html2canvas from "html2canvas";
 
 export function getJsonValues(text, name) {
     return {
-        text: text,
+        quote: text,
         author: name,
       };
 }

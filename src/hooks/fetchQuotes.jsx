@@ -34,8 +34,8 @@ export const postTranslate = async (textConfiguration, setTranslate) => {
   );
 };
 
-export const getQuoteEs = async () => {
-  const data = await axios(APIENDPOINTS.API_QUOTES_es.GET_RANDOM_QUOTE).then(
+export const getQuoteEs = () => {
+  const data = axios(APIENDPOINTS.API_QUOTES_es.GET_RANDOM_QUOTE).then(
     (response) => transformDataOfQuoteInSpanish(response)
   );
   return data;
@@ -49,8 +49,8 @@ export const getQuoteEs2 = () =>
     }
   );
 
-export const getQuoteNorris = async () => {
-  const data = await axios(
+export const getQuoteNorris =  () => {
+  const data =  axios(
     APIENDPOINTS.API_CHUCK_NORRIS.GET_RANDOM_NORRIS
   ).then((response) => transformDataChuckNorrisQuote(response));
   return data;
@@ -63,29 +63,29 @@ export const getMarvel = async () => {
   return data;
 };
 
-export const getRandomNinja = async () => {
-  const data = await axios(APIENDPOINTS.API_NINJA.GET_RANDOM_NINJA).then(
+export const getRandomNinja =  () => {
+  const data =  axios(APIENDPOINTS.API_NINJA.GET_RANDOM_NINJA).then(
     (response) => transformDataRandomNinjaQuote(response)
   );
   return data;
 };
 
-export const getRandomTrump = async () => {
-  const data = await axios(APIENDPOINTS.API_TRUMP.GET_RANDOM_TRUMP).then(
+export const getRandomTrump = () => {
+  const data =  axios(APIENDPOINTS.API_TRUMP.GET_RANDOM_TRUMP).then(
     (response) => transformDataDonaldTrumpQuote(response)
   );
   return data;
 };
 
-export const getRandomAnimechan = async (setAnime) => {
-  const data = await axios(
+export const getRandomAnimechan =  () => {
+  const data =  axios(
     APIENDPOINTS.API_ANIMECHAN.GET_RANDOM_ANIMECHAN
   ).then((response) => transformDataAnimechanQuote(response));
   return data;
 };
 
-export const getRandomBreakingBad = async () => {
-  const data = await axios(
+export const getRandomBreakingBad =  () => {
+  const data =  axios(
     APIENDPOINTS.API_BREAKING_BAD.GET_RANDOM_BREAKING_BAD
   ).then((response) => transformDataBreakingBadQuote(response));
   return data;

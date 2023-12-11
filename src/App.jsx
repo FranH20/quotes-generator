@@ -24,18 +24,18 @@ const router = createBrowserRouter([
         path: "inicio",
         element: <Home />,
       },
-      {
-        path: "generador",
-        element: <Generator />,
-      },
-      {
-        path: "citas",
-        element: <Quotes />,
-      },
-      {
-        path: "sobre-mi",
-        element: <AboutMe />,
-      },
+      // {
+      //   path: "generador",
+      //   element: <Generator />,
+      // },
+      // {
+      //   path: "citas",
+      //   element: <Quotes />,
+      // },
+      // {
+      //   path: "sobre-mi",
+      //   element: <AboutMe />,
+      // },
       {
         path: "*",
         element: <NotFound />,

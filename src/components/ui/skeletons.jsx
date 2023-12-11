@@ -18,8 +18,8 @@ export function HomeSkeleton() {
 export function CardQuoteSkeleton() {
   return (
     <>
-      <div className="animate-pulse h-20 w-full rounded-md bg-gray-100"></div>
-      <div className="animate-pulse h-5 w-[70%] mt-3 rounded-md bg-gray-100"></div>
+      <div className="animate-pulse h-32 w-full rounded-md bg-color-fourth"></div>
+      <div className="animate-pulse h-8 w-full mt-3 rounded-md bg-color-fourth"></div>
     </>
   )
 }

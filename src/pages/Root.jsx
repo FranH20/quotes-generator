@@ -6,20 +6,21 @@ import { Outlet } from "react-router-dom";
 import Footer from "../containers/Footer";
 import Navigator from "../containers/Navigator";
 
-const RootHeaderNavigation = tw.header`bg-color-secondary px-8 w-full`;
-const RootMainPageContainer = tw.main`bg-vector-background px-8 min-h-screen`;
+const maxWidth = "max-w-7xl mx-auto";
+const RootHeaderNavigation = tw.header`bg-color-secondary px-8 w-full ${maxWidth}`;
+const RootMainPageContainer = tw.main`bg-color-secondary px-8 my-12 ${maxWidth}`;
 
 function Root() {
   return (
-    <>
+    <div className="bg-color-secondary">
       <RootHeaderNavigation>
         <Navigator />
       </RootHeaderNavigation>
       <RootMainPageContainer>
         <Outlet />
       </RootMainPageContainer>
-      <Footer />
-    </>
+      <Footer maxWidth={maxWidth} />
+    </div>
   );
 }
 

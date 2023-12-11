@@ -12,28 +12,26 @@ const LogoContainer = styled.div`
 
 const LogoImage = styled.img`
   ${tw`
-    w-5 mr-2
+    w-8 mr-2
   `};
 `;
 
 const LogoTitle = styled.span`
   ${tw`
-    text-white
-    text-lg
-    font-bold 
-    md:text-2xl
+  text-color-lightGreen
+  text-lg
+  font-bold 
+  md:text-2xl
+  [> b]:(text-color-hardGreen)
   `}
 `;
 
 const Logo = () => {
-  
   return (
-    <>
-      <LogoContainer>
-        <LogoImage alt="Logo" src="/img/cita-derecha-90.svg" />
-        <LogoTitle>Fraseando</LogoTitle>
-      </LogoContainer>
-    </>
+    <LogoContainer>
+      <LogoImage alt="Logo" src="/img/cita-derecha-90.svg" />
+      <LogoTitle>frase<b>ando</b></LogoTitle>
+    </LogoContainer>
   );
 };
 

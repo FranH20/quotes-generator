@@ -1,7 +1,6 @@
-import React from "react";
+import React,{ forwardRef }  from "react";
 import tw, { styled } from "twin.macro";
 import PropTypes from "prop-types";
-import { forwardRef } from "react";
 
 const buttonVariants = {
   red: tw`bg-red-600 hover:bg-red-500 text-white`,
@@ -11,10 +10,11 @@ const buttonVariants = {
   amber: tw`bg-amber-500 hover:bg-amber-400 text-black`,
   green: tw`bg-green-500 hover:bg-green-400 text-black`,
   purple: tw`bg-purple-800 text-white`,
+  "yellow-fancy": tw`bg-color-third text-color-lightGreen border border-color-lightGreen `,
 };
 
 const ButtonContainer = styled.button(({ color }) => [
-  tw`flex items-center py-2 px-4 gap-x-2 font-bold rounded hover:bg-color-fourth`,
+  tw`flex items-center py-2 px-4 gap-x-2 font-bold rounded-md disabled:opacity-75`,
   buttonVariants[color],
 ]);
 
@@ -30,9 +30,9 @@ export const ButtonBase = forwardRef(({ name, className, onClick }, ref) => {
   );
 });
 
-export const ButtonQuote = ({ name, onClick, children, color }) => {
+export const ButtonQuote = ({ name, onClick, children, color, disabled = false }) => {
   return (
-    <ButtonContainer onClick={onClick} color={color}>
+    <ButtonContainer onClick={onClick} color={color} disabled={disabled}>
       {children}
       {name}
     </ButtonContainer>
@@ -40,53 +40,52 @@ export const ButtonQuote = ({ name, onClick, children, color }) => {
 };
 
 export const ButtonQuoteRed = ({ name, onClick, children }) => (
-  <ButtonQuote onClick={onClick} color="red">
+  <ButtonQuote onClick={onClick} color="red" name={name}>
     {children}
-    {name}
   </ButtonQuote>
 );
 
 export const ButtonQuoteYellow = ({ name, onClick, children }) => (
-  <ButtonQuote onClick={onClick} color="yellow">
+  <ButtonQuote onClick={onClick} color="yellow" name={name}>
     {children}
-    {name}
   </ButtonQuote>
 );
 
 export const ButtonQuoteBlue = ({ name, onClick, children }) => (
-  <ButtonQuote onClick={onClick} color="blue">
+  <ButtonQuote onClick={onClick} color="blue" name={name}>
     {children}
-    {name}
   </ButtonQuote>
 );
 
 export const ButtonQuoteGray = ({ name, onClick, children }) => (
-  <ButtonQuote onClick={onClick} color="gray">
+  <ButtonQuote onClick={onClick} color="gray" name={name}>
     {children}
-    {name}
   </ButtonQuote>
 );
 
 export const ButtonQuoteAmber = ({ name, onClick, children }) => (
-  <ButtonQuote onClick={onClick} color="amber">
+  <ButtonQuote onClick={onClick} color="amber" name={name}>
     {children}
-    {name}
   </ButtonQuote>
 );
 
 export const ButtonQuoteGreen = ({ name, onClick, children }) => (
-  <ButtonQuote onClick={onClick} color="green">
+  <ButtonQuote onClick={onClick} color="green" name={name}>
     {children}
-    {name}
   </ButtonQuote>
 );
 
 export const ButtonQuotePurple = ({ name, onClick, children }) => (
-  <ButtonQuote onClick={onClick} color="purple">
+  <ButtonQuote onClick={onClick} color="purple" name={name}>
     {children}
-    {name}
   </ButtonQuote>
 );
+
+export const ButtonQuoteFancyYellow = ({ name, onClick, children, disabled }) => (
+  <ButtonQuote onClick={onClick} color="yellow-fancy" name={name} disabled={disabled}>
+    {children}
+  </ButtonQuote>
+)
 
 ButtonQuote.propTypes = {
   name: PropTypes.string,
@@ -132,6 +131,12 @@ ButtonQuoteGreen.propTypes = {
 };
 
 ButtonQuotePurple.propTypes = {
+  name: PropTypes.string.isRequired,
+  children: PropTypes.element,
+  onClick: PropTypes.func,
+};
+
+ButtonQuoteFancyYellow.propTypes = {
   name: PropTypes.string.isRequired,
   children: PropTypes.element,
   onClick: PropTypes.func,

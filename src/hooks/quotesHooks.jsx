@@ -8,5 +8,6 @@ export const QuoteInSpanish = () => {
     APIENDPOINTS.API_QUOTES_es.GET_RANDOM_QUOTE,
     callback
   );
+  console.log(data)
   return { data, error, loading };
 };

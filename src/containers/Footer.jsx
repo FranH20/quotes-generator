@@ -1,10 +1,14 @@
 import React from "react";
 
-const Footer = () => {
-  return (<footer className="bg-color-secondary py-5 text-center">
-    <h2 className="text-white text-l">Copyright © 2023</h2>
-    <h3 className="text-white text-l">Hecho por Franklin Huichi</h3>
-  </footer>);
+const Footer = (maxWidth) => {
+  return (
+    <footer
+      className={`bg-color-blackSpace py-5 text-center text-l text-color-secondary ${maxWidth}`}
+    >
+      <span>Copyright © 2023</span>
+      <p>Hecho por Franklin Huichi</p>
+    </footer>
+  );
 };
 
 export default Footer;
