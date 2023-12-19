@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   BodyPortrait,
   ButtonsPortrait,
@@ -35,10 +35,10 @@ const Portrait = () => {
           <ButtonsPortrait>
             <section>
               <GreenLinkButton>
-                <NavLink>Citas aleatorias</NavLink>
+                <Link to="#randomQuoteSection">Citas aleatorias</Link>
               </GreenLinkButton>
               <CalypsoLinkButton>
-                <NavLink>Generar citas</NavLink>
+                <NavLink to="/generador">Generar citas</NavLink>
               </CalypsoLinkButton>
             </section>
           </ButtonsPortrait>

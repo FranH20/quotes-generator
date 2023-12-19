@@ -7,7 +7,7 @@ import BodyGenerator from "../containers/BodyGenerator";
 const Generator = () => {
   return (
     <>
-      {/* <Title name="Genera tu frase aqui" /> */}
+      <Title name="Genera tu frase aqui" />
       <BodyGenerator />
     </>
   );

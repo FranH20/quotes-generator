@@ -12,7 +12,7 @@ import QuotesSelectContainer from "../QuotesSelectContainer";
 
 const QuoteExample = () => {
   return (
-    <BodyQuoteExample>
+    <BodyQuoteExample id="randomQuoteSection">
       <SelectorsQuoteExample>
         <p>Genera tu frase favorita dependiendo tus gustos:</p>
         <SelectQuoteExample>

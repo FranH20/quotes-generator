@@ -2,11 +2,12 @@ import React from "react";
 
 const NotFound = () => {
   return (
-    <main className="w-full grid content-center justify-center">
-      <h1 className="text-8xl text-center">
-        ERROR <strong>404</strong>
+    <aside className="bg-color-blackSpace rounded-lg py-5 px-10 text-color-secondary">
+      <h1 className="text-5xl sm:text-8xl text-center font-bold">
+        ERROR <br/><span className="text-color-primary">404</span>
       </h1>
-    </main>
+      <img src="/img/alert-logo.svg" alt="Alert logo" className="w-24 sm:w-40 mx-auto py-2"/>
+    </aside>
   );
 };
 
