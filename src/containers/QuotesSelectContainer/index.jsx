@@ -57,12 +57,6 @@ const QuotesSelectContainer = () => {
     <>
       <BodyQuoteSelector
         onChange={selectTheQuote}
-        style={{
-          backgroundImage: "url('/img/arrow-down.svg')",
-          backgroundSize: "24px",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "calc(100% - 8px) center",
-        }}
         disabled={loading}
       >
         <option>Escoge una de estas opciones</option>

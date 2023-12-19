@@ -3,7 +3,7 @@ import tw from "twin.macro";
 import PropTypes from "prop-types";
 
 const H1 = tw.h1`text-3xl font-bold lg:text-4xl`;
-const HeaderTitle = tw(H1)`p-8 text-center`;
+const HeaderTitle = tw(H1)`py-2 text-center`;
 
 export const TitleLogo = ({ name }) => <H1 tw="text-white">{name}</H1>;
 TitleLogo.propTypes = {

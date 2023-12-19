@@ -1,64 +1,55 @@
 import React, { useState } from "react";
 import { ButtonBase } from "../../components/ButtonQuote";
-import QuoteTab from "../../containers/QuoteTab";
-import BackgroundTab from "../../containers/BackgroundTab";
-import TextTab from "../../containers/TextTab";
-import tw from "twin.macro";
 import ButtonsContainer from "../../containers/ButtonsContainer";
 import { CLASSNAME_GENERATOR_IMAGE } from "../../utils/constants/imageGenerator";
 import { downloadImage } from "../../hooks/functionUtils";
-
-const Wrapper = tw.section`w-full`;
-const WrapperContainer = tw.article`
-    grid 
-    grid-cols-10 
-    gap-y-5
-`;
+import {
+  BodyTabContainer,
+  OptionsTabContainer,
+  Wrapper,
+  WrapperContainer,
+} from "./twinStyle";
+import BackgroundTab from "../../containers/BackgroundTab";
+import TextTab from "../../containers/TextTab";
+import QuoteTab from "../../containers/QuoteTab";
+import toast, { Toaster } from "react-hot-toast";
 
 const handleTabsPage = (param) => {
   switch (param) {
     case "FONDO":
-      return (
-        <BackgroundTab
-          className="row-start-2 col-start-1 col-end-11"
-        />
-      );
+      return <BackgroundTab />;
     case "TEXTO":
-      return (
-        <TextTab
-          className="row-start-2 col-start-1 col-end-11"
-        />
-      );
+      return <TextTab />;
     default:
-      return (
-        <QuoteTab
-          className="row-start-2 col-start-1 col-end-11"
-        />
-      );
+      return <QuoteTab />;
   }
 };
 
-const GeneratorEditor = ( ) => {
-  
-  const [tab, setTab] = useState('FRASE');
+const GeneratorEditor = () => {
+  const [tab, setTab] = useState("FRASE");
 
   const handleDownload = async () => {
     const divImage = document.querySelector(`.${CLASSNAME_GENERATOR_IMAGE}`);
     if (!divImage) return;
-    await downloadImage(divImage);
+    await downloadImage(divImage)
+      .then(() => toast.success("Descarga completa"))
+      .catch(() => toast.error("Error durante la descarga"));
   };
 
   return (
     <Wrapper>
       <WrapperContainer>
-        <ButtonsContainer tab={tab} setTab={setTab} />
-        {handleTabsPage(tab)}
+        <OptionsTabContainer>
+          <ButtonsContainer setTab={setTab} tab={tab} />
+        </OptionsTabContainer>
+        <BodyTabContainer>{handleTabsPage(tab)}</BodyTabContainer>
         <ButtonBase
           name="Descargar"
-          className="row-start-3 row-end-4 col-start-2 col-end-10 border-0 bg-color-primary text-white font-bold hover:bg-fuchsia-800"
+          className="border-0 bg-color-fourth text-color-greenLight font-bold hover:bg-color-primary"
           onClick={handleDownload}
         />
       </WrapperContainer>
+      <Toaster />
     </Wrapper>
   );
 };

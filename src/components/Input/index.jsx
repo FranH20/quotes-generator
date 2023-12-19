@@ -5,14 +5,13 @@ const Input = tw.input`
 `;
 
 export const InputFile = tw(Input)`
-  bg-gray-200 
   border 
   cursor-pointer
   rounded 
   w-full 
 `;
 
-export const InputRange = tw(Input)``;
+export const InputRange = tw(Input)`accent-color-third w-full`;
 
 export const InputColor = tw(Input)`
   cursor-pointer

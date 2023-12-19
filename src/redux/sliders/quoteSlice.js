@@ -14,7 +14,17 @@ const initialState = {
 export const quoteSlice = createSlice({
   name: "quote",
   initialState,
-  reducers: {},
+  reducers: {
+    setData(state, action) {
+      state.data = action.payload;
+    },
+    setQuote(state, action) {
+      state.data.quote = action.payload;
+    },
+    setAuthor(state, action) {
+      state.data.author = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchQuote.pending, (state) => {
       toast.loading("Obteniendo la cita");
@@ -35,5 +45,5 @@ export const quoteSlice = createSlice({
   },
 });
 
-export const { setQuote, setLoading, setError } = quoteSlice.actions;
+export const { setData, setQuote, setAuthor } = quoteSlice.actions;
 export default quoteSlice.reducer;

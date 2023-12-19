@@ -10,12 +10,13 @@ const buttonVariants = {
   amber: tw`bg-amber-500 hover:bg-amber-400 text-black`,
   green: tw`bg-green-500 hover:bg-green-400 text-black`,
   purple: tw`bg-purple-800 text-white`,
-  "yellow-fancy": tw`bg-color-third text-color-lightGreen border border-color-lightGreen `,
+  "yellow-fancy": tw`bg-color-third text-color-lightGreen border border-color-lightGreen`,
 };
 
-const ButtonContainer = styled.button(({ color }) => [
+const ButtonContainer = styled.button(({ color, active }) => [
   tw`flex items-center py-2 px-4 gap-x-2 font-bold rounded-md disabled:opacity-75`,
   buttonVariants[color],
+  active && tw`bg-gradient-to-r from-color-primary to-color-fourth`
 ]);
 
 export const ButtonBase = forwardRef(({ name, className, onClick }, ref) => {
@@ -30,9 +31,9 @@ export const ButtonBase = forwardRef(({ name, className, onClick }, ref) => {
   );
 });
 
-export const ButtonQuote = ({ name, onClick, children, color, disabled = false }) => {
+export const ButtonQuote = ({ name, onClick, children, color, disabled = false, active = false }) => {
   return (
-    <ButtonContainer onClick={onClick} color={color} disabled={disabled}>
+    <ButtonContainer onClick={onClick} color={color} disabled={disabled} active={active}>
       {children}
       {name}
     </ButtonContainer>
@@ -81,8 +82,8 @@ export const ButtonQuotePurple = ({ name, onClick, children }) => (
   </ButtonQuote>
 );
 
-export const ButtonQuoteFancyYellow = ({ name, onClick, children, disabled }) => (
-  <ButtonQuote onClick={onClick} color="yellow-fancy" name={name} disabled={disabled}>
+export const ButtonQuoteFancyYellow = ({ name, onClick, children, disabled, active = false }) => (
+  <ButtonQuote onClick={onClick} color="yellow-fancy" name={name} disabled={disabled} active={active}>
     {children}
   </ButtonQuote>
 )
@@ -92,6 +93,8 @@ ButtonQuote.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.element,
   color: PropTypes.string,
+  disabled: PropTypes.bool,
+  active: PropTypes.bool,
 };
 
 ButtonQuoteRed.propTypes = {
@@ -140,4 +143,5 @@ ButtonQuoteFancyYellow.propTypes = {
   name: PropTypes.string.isRequired,
   children: PropTypes.element,
   onClick: PropTypes.func,
+  active: PropTypes.bool
 };

@@ -10,15 +10,15 @@ export const topButtons = [
   {
     name: "Horizontal",
     size: {
-      width: 470,
-      height: 550,
+      width: 550,
+      height: 470,
     },
   },
   {
     name: "Vertical",
     size: {
-      width: 470,
-      height: 340,
+      width: 340,
+      height: 470,
     },
   },
 ];

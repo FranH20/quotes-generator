@@ -11,9 +11,9 @@ import {
   transformDataRandomNinjaQuote,
 } from "../utils/functions/transformData";
 
-export const getQuotes = async (setQuote) => {
+export const getQuotes = async (setData) => {
   await axios(APIENDPOINTS.API_QUOTE_OPTIONS.GET_RANDOM_QUOTES).then(
-    (response) => setQuote(response.data[0])
+    (response) => setData(response.data[0])
   );
 };
 
